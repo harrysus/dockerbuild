@@ -1,17 +1,9 @@
-- hosts: webserver
+- hosts: centos
   tasks:
     - name: install python-docker centos
       yum:
         name: python-docker
         state: present
-      when:
-      - ansible_distribution == "CentOS"
-    - name: install python-docker ubuntu
-      apt:
-        name: python-docker
-        state: present
-      when:
-      - ansible_distribution == "Ubuntu"
     - name: pull image 
       docker_image:
         name: harrysus02/apache-jenkins:latest
