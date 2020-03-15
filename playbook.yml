@@ -4,6 +4,14 @@
       yum:
         name: python-docker
         state: present
+    - name: stop container
+      docker_container:
+        name: container_by_jenkins
+        state: absent
+    - name: delete image
+      docker_image:
+        name: harrysus02/apache-jenkins:latest
+        state: absent
     - name: pull image 
       docker_image:
         name: harrysus02/apache-jenkins:latest
